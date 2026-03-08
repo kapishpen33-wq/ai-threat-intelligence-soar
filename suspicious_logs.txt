@@ -1,0 +1,18 @@
+Feb 27 14:22:01 server sshd[1234]: Failed password for root from 185.130.5.241 port 52219 ssh2
+Feb 27 14:22:05 server sshd[1234]: Failed password for admin from 185.130.5.241 port 52220 ssh2
+Feb 27 14:22:09 server sshd[1234]: Failed password for user from 185.130.5.241 port 52221 ssh2
+Feb 27 14:23:15 server kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00:11:22:33:44:55 SRC=8.8.8.8 DST=172.31.25.149 PROTO=TCP SPT=443 DPT=49152
+Feb 27 14:23:18 server kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00:11:22:33:44:55 SRC=8.8.8.8 DST=172.31.25.149 PROTO=UDP SPT=53 DPT=49153
+Feb 27 14:25:01 server sshd[1236]: Accepted publickey for admin from 192.168.1.50 port 53301 ssh2
+Feb 27 14:25:02 server sshd[1236]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Feb 27 14:28:44 server apache2: [error] [client 141.98.11.109] File does not exist: /var/www/html/wp-login.php
+Feb 27 14:28:45 server apache2: [error] [client 141.98.11.109] File does not exist: /var/www/html/wp-admin
+Feb 27 14:28:46 server apache2: [error] [client 141.98.11.109] File does not exist: /var/www/html/.env
+Feb 27 14:28:47 server apache2: [error] [client 141.98.11.109] script '/var/www/html/test.php' not found or unable to stat
+Feb 27 14:30:11 server sshd[1240]: Failed password for invalid user admin from 185.130.5.241 port 44321 ssh2
+Feb 27 14:30:15 server sshd[1241]: Failed password for invalid user root from 185.130.5.241 port 44325 ssh2
+Feb 27 14:31:00 server kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00:11:22:33:44:55 SRC=141.98.11.109 DST=172.31.25.149 PROTO=TCP SPT=40122 DPT=22
+Feb 27 14:31:05 server kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00:11:22:33:44:55 SRC=141.98.11.109 DST=172.31.25.149 PROTO=TCP SPT=40123 DPT=22
+Feb 27 14:32:10 server sshd[1250]: Connection closed by authenticating user root 185.130.5.241 port 52219 [preauth]
+Feb 27 14:35:00 server su[1300]: pam_unix(su:session): session opened for user root by admin(uid=1000)
+Feb 27 14:35:05 server su[1300]: Successful su for root by admin on /dev/pts/0 from 192.168.1.50
