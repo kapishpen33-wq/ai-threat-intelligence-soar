@@ -1,21 +1,59 @@
-# AI-Powered Threat Intelligence SOAR Utility
+# AI Threat Intelligence SOAR Utility
 
-## Objective
-To engineer a custom DevSecOps command-line utility that automates the Incident Response lifecycle. The tool extracts network indicators of compromise (IOCs) from raw logs, queries enterprise threat intelligence databases, manages state via a local cache, and leverages Generative AI to automate executive reporting. 
+## Overview
 
-## Tech Stack & Libraries
-* **Language:** Python 3
-* **APIs:** VirusTotal (v3), Google Gemini (2.5 Flash)
-* **Libraries:** `re` (RegEx), `requests`, `sqlite3`, `argparse`, `json`, `google-genai`
+This project is a Python-based security automation tool that parses raw logs, extracts indicators of compromise, enriches suspicious IP addresses with VirusTotal, caches prior scan results in SQLite, generates firewall-ready blocklists, and produces an analyst-readable incident report.
 
-## Core Architecture & Features
-1. **Regex Extraction Engine:** Parses raw, unstructured firewall/network logs to isolate unique IPv4 addresses.
-2. **Threat Intelligence Integration:** Interrogates the VirusTotal REST API to determine the malicious reputation of extracted IPs.
-3. **Database Caching (SQLite):** Implements a local `threat_cache.db` to store historical scan results. This drastically reduces API calls, prevents rate-limiting, and drops execution time from minutes to milliseconds on recurring IOCs.
-4. **SOAR Automation:** Automatically generates a formatted `blocklist.json` artifact containing confirmed malicious IPs, designed for direct ingestion by enterprise firewalls (e.g., Palo Alto, AWS Network Firewall).
-5. **AI Incident Responder:** Integrates the Google Gemini LLM to automatically ingest the threat data and draft a professional, C-Suite ready Markdown Incident Report detailing the findings, automated remediation steps, and recommended threat hunting procedures.
+The goal is to simulate how a SOC analyst could automate early-stage triage while still keeping final security decisions evidence-based and analyst-reviewed.
 
-## Usage
-The tool is designed with a standard CLI architecture:
-```bash
-python3 scanner.py -f suspicious_logs.txt
+## What This Project Demonstrates
+
+- Log parsing and IOC extraction with Python and RegEx
+- Threat intelligence enrichment using the VirusTotal API
+- SQLite caching to reduce duplicate API calls
+- Automated blocklist artifact generation
+- AI-assisted incident report drafting
+- Security automation workflow design
+- Analyst-friendly reporting and triage logic
+
+## Workflow
+
+text Raw logs → Extract IP addresses → Deduplicate indicators → Check SQLite cache → Query VirusTotal for unknown IPs → Score threat reputation → Generate blocklist.json → Generate incident_report.md 
+
+## Key Outputs
+
+| Output | Purpose |
+|---|---|
+| blocklist.json | Firewall-ready list of malicious IPs |
+| incident_report.md | Analyst-readable incident report |
+| threat_cache.db | Local cache of previous enrichment results |
+| suspicious_logs.txt | Sample log input |
+| scanner.py | Main automation script |
+
+## Security Value
+
+Manual IOC triage can be slow and repetitive. This project shows how Python automation can reduce analyst workload by extracting indicators, enriching them with threat intelligence, and producing structured outputs for review.
+
+The tool does not replace analyst judgment. It accelerates triage and provides evidence that a security analyst can validate before taking action.
+
+## Tools Used
+
+- Python
+- RegEx
+- VirusTotal API
+- SQLite
+- JSON
+- Markdown
+- Google Gemini API for report drafting
+
+## MITRE ATT&CK Relevance
+
+This project supports investigation workflows related to suspicious network activity, malicious infrastructure, and external threat indicators. It can be used as part of triage for events involving command-and-control infrastructure, brute-force activity, scanning, or suspicious external connections.
+
+## Limitations
+
+- The tool depends on external threat intelligence API results.
+- VirusTotal detections should be reviewed before enforcement.
+- Blocklists should be validated before use in production.
+- AI-generated reports should be treated as drafts, not final security decisions.
+- Sample logs are simulated and do not contain real customer or enterprise data.
